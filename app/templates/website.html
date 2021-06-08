@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<link rel = "stylesheet" href = "style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<html>
+  <meta charset="UTF-8">
+<style>
+
+  input:-ms-input-placeholder {color:#a8a8a8;}
+input::-webkit-input-placeholder {color:#a8a8a8;}
+input:-moz-placeholder {color:#a8a8a8;}
+
+
+#mainimg{
+position : relative;
+left : 35%;
+top : 10%;
+width: 30%;
+height: 30%;
+display: block;
+padding: 10px; 
+margin-top: 100px;
+}
+
+p{
+display: block;
+width:50%;
+position:relative;
+top : 0%;
+left : 25%;
+font-size: 50px;
+text-align : center;
+font-family: cursive;
+}
+
+#search{
+  position: relative;
+  top : 10%;
+left : 20%;
+height: 25px;
+width:60%;
+background : #ffffff;
+}
+
+#keyword{
+position : relative;
+width : 17%;
+top : 30%;
+left : 50px;
+border : 1px solid BLACK;
+height: 200px;
+}
+#category {
+position : relative;
+width : 17%;
+top : 30%;
+left: -200px;
+border : 1px solid BLACK;
+height: 200px;
+}
+#update {
+position : relative;
+width : 17%;
+top : 9%;
+left : -100px;
+border : 1px solid BLACK;
+height: 200px;
+}
+
+table, tr {
+border : 1px solid gray;}
+thead {
+background-color: lightgray;
+color :black;
+}
+th {
+height: 40px;
+text-align : center;
+font-weight: 220;
+}
+td {
+border : 1px solid gray;
+text-align : left;
+height: 30px;
+}
+
+input{
+font-size: 16px;
+width: 30%;
+    height: 30px;
+border:1px solid black;
+outline:none;
+text-align : center;
+float:left;
+}
+
+button{
+width : 10%;
+    height : 30px;
+background: lightgray;
+outline: none;
+float: right;
+color: black;
+}
+
+
+</style>
+
+
+<head>
+  <nav class="navbar navbar-expand-lg navbar-light ">
+    <a class="navbar-brand" href="#">남북 통일 논문, 그게 뭐죠?</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" style = 'color:gray;' href="#">Analysys </a>
+        <a class="nav-link active" style = 'color:gray;' href="#">Support us   </a>
+        <a class="nav-link active" style = 'color:gray;' href="#">About us   </a>
+      </div>
+    </div>
+    <a class="nav-link active" style= 'text-align:right; color:gray;' href="#">Sign in </a>
+    <a class="nav-link active" style= "text-align:right; color:gray;" href="#">Sign up</a>
+  </nav>
+
+1
+
+</head>
+<body>
+  <img id ='mainimg' src="logo.png" >
+<div id = "search">
+   <form action="http://localhost:80/search" method="POST">
+   <input type="text"  name='key' placeholder="남북 통일 논문, 그게 뭐죠?"> key->inst, value->통일부
+       <input type="text" name="inst" placeholder="기관명으로 검색">
+       <input type="text" name="date" placeholder="발행년도로 검색">
+   <button type = "submit">검색</button>
+   </form>
+</div>
+<div>
+<table style = 'margin: 100px 350px 0px 14%;' id = "keyword" align = "left">
+ <thead>
+  <tr>
+   <th> 올해의 KeyWord Top 5 </th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr> <td> 1. </td> </tr>
+   <tr> <td> 2. </td> </tr>
+   <tr> <td> 3. </td> </tr>
+   <tr> <td> 4. </td> </tr>
+   <tr> <td> 5. </td> </tr>
+  </tbody>
+</table>
+<table style = 'margin-top: 100px' id = "category" align = "left">
+ <thead>
+  <tr>
+   <th> 이 주의 카테고리 </th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr> <td> 1. </td> </tr>
+   <tr> <td> 2. </td> </tr>
+   <tr> <td> 3. </td> </tr>
+   <tr> <td> 4. </td> </tr>
+   <tr> <td> 5. </td> </tr>
+  </tbody>
+</table>
+<table id = "update" style = 'margin-top: 100px' align = "left">
+ <thead>
+  <tr>
+   <th> 최근 업데이트된 논문 </th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr> <td> 1. </td> </tr>
+   <tr> <td> 2. </td> </tr>
+   <tr> <td> 3. </td> </tr>
+   <tr> <td> 4. </td> </tr>
+   <tr> <td> 5. </td> </tr>
+  </tbody>
+</table>
+</div>
+</body>
+</html>

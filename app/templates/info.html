@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+    <link rel = "stylesheet" href = "searchstyle.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <html>
+      <meta charset="UTF-8">
+      <style>
+    input:-ms-input-placeholder {color:#a8a8a8;}
+    input::-webkit-input-placeholder {color:#a8a8a8;}
+    input:-moz-placeholder {color:#a8a8a8;}
+    
+    
+    #mainimg{
+    position : relative;
+    width: 15%;
+    height: 10%;
+    display: block;
+    padding: 10px; 
+    }
+    
+    #all {
+    position : relative;
+    top : -7%;
+    height : 80%;
+    }
+    
+    #side {
+    margin-top : 35px;
+    float : left;
+    width : 15%;
+    height : 80%;
+    }
+    
+    #search{
+    position: relative;
+    left : 18%;
+    top : -7%;
+    height: 30px;
+    width:60%;
+    border : 1px solid gray;
+    background : #ffffff;
+    }
+    
+    #keyword{
+    position : relative;
+    width : 90%;
+    left : 20px;
+    border : 1px solid BLACK;
+    }
+    #category {
+    position : relative;
+    width : 90%;
+    top : 5%;
+    left: 20px;
+    border : 1px solid BLACK;
+    }
+    #update {
+    position : relative;
+    width : 90%;
+    top : 10%;
+    left : 20px;
+    border : 1px solid BLACK;
+    }
+    
+    table, tr {
+    border : 1px solid black;
+    }
+    thead {
+    background-color : lightgray;
+    color : black;
+    
+    }
+    th {
+      height:40px;
+    text-align : center;
+    font-weight: 150 ;  
+    }
+    td {
+    border : 1px solid black;
+    text-align : left;
+    height:30px;
+    }
+    
+    input{
+    font-size: 16px;
+    width: 85%;
+    border:0px;
+    outline:none;
+    text-align : left;
+    float:left;
+    }
+    
+    button{
+    width : 15%;
+    height:100%;
+    border : 0px;
+    background: lightgray;
+    outline: none;
+    float: right;
+    color:black;
+    }
+    #main {
+    float : left;
+    margin-left : 50px;
+    width : 50%;
+    height : 100%;
+    }
+    p {
+    display : block;
+    padding-bottom : 10px;
+    }
+      </style>
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        <a class="navbar-brand" href="#">남북 통일 논문, 그게 뭐죠?</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" href="#">Analysis </a>
+            <a class="nav-link active" href="#">Support us   </a>
+            <a class="nav-link active" href="#">About us   </a>
+          </div>
+        </div>
+        <a class="nav-link active" style= 'text-align:right; color:black;' href="#">Sign in </a>
+        <a class="nav-link active" style= "text-align:right; color:black;" href="#">Sign up</a>
+      </nav>
+    <img id ='mainimg' src="logo.png" >
+    <body>
+    <div id = "search">
+        <input background-image:url('logo.png') style='color:black; text-align: center;'type="text" placeholder="남북 통일 논문, 그게 뭐죠?" >
+        <button>검색</button>
+    </div>
+    <div id = "all" >
+    <div id = "side" >
+    <table id = "keyword">
+     <thead>
+      <tr>
+       <th> 올해의 KeyWord Top 5 </th>
+       </tr>
+      </thead>
+      <tbody>
+       <tr> <td> 1. 북한</td> </tr>
+       <tr> <td> 2. 본문</td> </tr>
+       <tr> <td> 3. 평화</td> </tr>
+       <tr> <td> 4. 통일</td> </tr>
+       <tr> <td> 5. 남북</td> </tr>
+      </tbody>
+    </table>
+    <table id = "category" >
+     <thead>
+      <tr>
+       <th> 이 주의 카테고리 </th>
+       </tr>
+      </thead>
+      <tbody>
+       <tr> <td> 1. </td> </tr>
+       <tr> <td> 2. </td> </tr>
+       <tr> <td> 3. </td> </tr>
+       <tr> <td> 4. </td> </tr>
+       <tr> <td> 5. </td> </tr>
+      </tbody>
+    </table>
+    <table id = "update">
+     <thead>
+      <tr>
+       <th> 최근 업데이트된 논문 </th>
+       </tr>
+      </thead>
+      <tbody>
+       <tr> <td> 1. </td> </tr>
+       <tr> <td> 2. </td> </tr>
+       <tr> <td> 3. </td> </tr>
+       <tr> <td> 4. </td> </tr>
+       <tr> <td> 5. </td> </tr>
+      </tbody>
+    </table>
+    </div>
+    <div id = "main">
+    <p>
+     {% for key, value in value.items() %}
+          {% if  key == 'title' %}
+           <h2>{{value}}</h2>
+
+           {%else if key == 'wins'%}
+           <h6>{{value}}</h6>
+
+          {%else if key == 'date'%}
+          <h6 style = "display: block; text-align: right;">{{value}}</h6>
+
+          {% else if key == 'content'%}
+          <h5>content</h5>
+
+          {% endif %}
+      {% endfor %}
+    </p>
+    </div>
+    </div>
+    
+    </body>
+    </html>
