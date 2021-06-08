@@ -8,6 +8,10 @@ app.register_blueprint(test)
 app.register_blueprint(main)
 
 @app.route('/')
+def first():
+    return render_template('first.html')
+
+@app.route('/website')
 def website():
     return render_template('website.html')
 
@@ -19,4 +23,4 @@ def search():
 @app.route('/info',methods=['POST','GET'])
 def info():
     ti = request.form
-    return render_template("info.html", value = ti)
+    return render_template("info.html", val = ti)
