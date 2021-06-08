@@ -177,21 +177,9 @@
     </div>
     <div id = "main">
     <p>
-     {% for key, value in value.items() %}
-          {% if  key == 'title' %}
-           <h2>{{value}}</h2>
 
-           {%else if key == 'wins'%}
-           <h6>{{value}}</h6>
+          <h2>{{ value }}</h2>
 
-          {%else if key == 'date'%}
-          <h6 style = "display: block; text-align: right;">{{value}}</h6>
-
-          {% else if key == 'content'%}
-          <h5>content</h5>
-
-          {% endif %}
-      {% endfor %}
     </p>
     </div>
     </div>

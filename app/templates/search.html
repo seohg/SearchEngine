@@ -186,10 +186,11 @@ height : 100%;
 </div>
 <div id = "main">
 <form action = "http://localhost:80/info" method="POST">
-<button id = "bs">
+<button id = "bs" type ="submit">
     {% for key, value in value.items() %}
         {% if  key == 'key' %}
-         <h2> {{value}}</h2>
+            <h2> {{ value }} </h2>
+            <input  style = 'display:none;' type = "text" name = 'title' value = {{ value }}>
         {% else %}
         <h5> {{value}} </h5>
         {% endif %}
