@@ -31,6 +31,7 @@ def findDocumentsForQuery(query):
     for term in query:
         # docDit={} rid 저장
         # N = 문서의 수
+        # select_q = select count(*) from 
         # dft = 단어를 포함하고 있는 문서의 수
         # ftd = 문서에 포함되는 단어의 빈도
         # k = TF의 saturation을 결정하는 요소 (1.2~2.0의 값을 사용하는 것이 일반적)
