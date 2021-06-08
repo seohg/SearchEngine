@@ -56,3 +56,8 @@ CREATE TABLE content_date(
    FOREIGN KEY (RID) REFERENCES research(RID)
 );
 
+CREATE TABLE body(
+    RID INTEGER,
+    body varchar(6000),
+    FOREIGN KEY (RID) REFERENCES research(RID)
+)
