@@ -1,7 +1,7 @@
 CREATE DATABASE testDB default CHARACTER SET UTF8;
- 
+
 use testDB;
- 
+
 
 CREATE TABLE category(
    CID INTEGER PRIMARY KEY AUTO_INCREMENT,
@@ -43,10 +43,11 @@ CREATE TABLE pub_date(
 );
 
 CREATE TABLE keyword(
-   word VARCHAR(100) PRIMARY KEY,
+   word VARCHAR(100) NOT NULL,
    RID INTEGER,
    freq INTEGER NOT NULL,
-   FOREIGN KEY (RID) REFERENCES research(RID)
+   FOREIGN KEY (RID) REFERENCES research(RID),
+   PRIMARY KEY (word, RID)
 );
 
 CREATE TABLE content_date(
@@ -55,3 +56,8 @@ CREATE TABLE content_date(
    FOREIGN KEY (RID) REFERENCES research(RID)
 );
 
+CREATE TABLE body(
+    RID INTEGER,
+    body varchar(6000),
+    FOREIGN KEY (RID) REFERENCES research(RID)
+)
