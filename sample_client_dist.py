@@ -1,3 +1,4 @@
+
 import urllib.request as r
 import urllib.parse as p
 import json
@@ -5,7 +6,17 @@ import pandas as pd
 import ssl
 import re
 
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.tokenize import RegexpTokenizer
+import konlpy
+from konlpy.tag import Kkma
+
+
+import string
 from app.module import dbModule
+
+
 
 for page in range(1,49):
   '''
@@ -45,6 +56,7 @@ for page in range(1,49):
       
 
   db_class = dbModule.Database()
+  kkma=Kkma()
 
   for i, item in df.iterrows():
 
@@ -101,6 +113,65 @@ for page in range(1,49):
     sql2_1= "update testDB.research set WID=('%s') where testDB.research.RID='%d'"%(wid['WID'],rid)
     db_class.execute(sql2_1)
     db_class.commit()
+
+
+#TABLE research done=====================================================================================
+
+    if item.body is not None:
+      #print(rid, " -- ", item.body)
+      #item.body = re.sub('[-=+,#/\?:^$.@*\"※~&%ㆍ!』\\‘|\(\)\[\]\<\>`\'…》]', '', item.date)
+      
+      words = str(item.body)
+      words = re.sub(r'[^ ㄱ-ㅣ가-힣A-Za-z//s]', '',words)
+
+      #words = words.encode('utf-8').strip()
+      #decode('utf-8', 'ignore')
+      #encoded_string = item.body.encode("ascii", "ignore")
+      #words = encoded_string.decode()
+
+      print(rid, " +- ", words)
+      words = kkma.pos(words,flatten=False)
+
+      for keyword in words:
+        tot_word_cnt = len(words)
+        sqlcnt= "UPDATE testDB.research set tot_word_cnt=('%d') where testDB.research.RID='%d'"%(tot_word_cnt,rid)
+        db_class.execute(sqlcnt)
+        db_class.commit()
+        
+        for index in range(len(keyword)):
+          
+          if keyword[index][1] == "NNG": # or keyword[index][1] == 'NR':
+            print(keyword[index])
+            sqlKey = "INSERT INTO testDB.keyword(word, RID, freq) VALUES('%s','%d','%d') ON DUPLICATE KEY UPDATE freq=freq+1"% (keyword[index][0], rid, 1)
+         
+            #sqlKey = "INSERT INTO testDB.keyword(word, RID, freq) VALUES('%s','%d','%d')" % (keyword[index][0], rid, 1)
+          elif keyword[index][1] == 'NNM' and keyword[index][1] == '년':
+            sqlKey = "INSERT INTO testDB.keyword(word, RID, freq) VALUES('%s','%d','%d') ON DUPLICATE KEY UPDATE freq=freq+1"% (keyword[index-1][0], rid, 1)
+            #sqlKey = "INSERT INTO testDB.keyword(word, RID, freq) VALUES('%s','%d','%d')" % (keyword[index][0], rid, 1)
+            print("year ", keyword[index-1])
+          elif keyword[index][1] == 'NNM' and keyword[index][1] == '월':
+            sqlKey = "INSERT INTO testDB.keyword(word, RID, freq) VALUES('%s','%d','%d') ON DUPLICATE KEY UPDATE freq=freq+1"% (keyword[index-1][0], rid, 1)
+            #sqlKey = "INSERT INTO testDB.keyword(word, RID, freq) VALUES('%s','%d','%d')" % (keyword[index][0], rid, 1)
+            print("year ", keyword[index-1])
+          
+          else:
+            continue
+          db_class.execute(sqlKey)
+          db_class.commit()
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     if item.date is not None:
       item.date = item.date.replace("\n","")
