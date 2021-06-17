@@ -12,13 +12,18 @@ app.register_blueprint(main)
 def website():
     return render_template('website.html')
 
+@app.route('/website')
+def website():
+    return render_template('website.html')
+
 @app.route('/search',methods=['POST','GET'])
 def search():
     title = request.form
     BM25_return = BM25.findDocumentsForQuery(title)
-
     return render_template("search.html", value = title)
+
 
 @app.route('/info',methods=['POST','GET'])
 def info():
-    return render_template("info.html")
+    ti = request.form
+    return render_template("info.html", val = ti)
